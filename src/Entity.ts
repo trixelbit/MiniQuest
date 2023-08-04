@@ -1,20 +1,33 @@
 import {Vector2} from "./Vector2";
 import {InputSystem} from "./InputSystem";
 
+export interface IComponent
+{
+    Start(): void;
+
+    Update(): void;
+}
+
+
 export class Entity
 {
   private _element: HTMLElement;
   private _speed: number;
   private _velocity: Vector2; 
-  private DRAG_COEFFICIENT: number = 0.05;
   private _inputSystem: InputSystem;
 
+  private _components: IComponent[];
+
+
+  private readonly DRAG_COEFFICIENT: number = 0.05;
+  
   constructor(element: HTMLElement, speed: number, inputSystem: InputSystem)
   {
     this._element = element;
     this._speed = speed;
     this._velocity = new Vector2(0,0);
     this._inputSystem = inputSystem;
+    this._components = [];
   }
 
   public Move(direction: Vector2): void
@@ -23,8 +36,22 @@ export class Entity
     this._velocity.Scale(this._speed);
   }
 
+
+  public Start(): void
+  {
+    for(const component of this._components)
+    {
+        component.Start();
+    }
+  }
+
   public Update(): void
   {
+    for(const component of this._components)
+    {
+      component.Update();
+    }
+
     this.ProcessInput();
 
     this._velocity = Vector2.Lerp(this._velocity, Vector2.Zero(), this.DRAG_COEFFICIENT);
@@ -73,4 +100,8 @@ export class Entity
     this.Move(new Vector2(x, y));
   }
 };
+
+
+
+
 

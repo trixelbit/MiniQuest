@@ -1,4 +1,4 @@
-import * as Math from './Math';
+import {Math} from './Math';
 
 
 export class Vector2
