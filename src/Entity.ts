@@ -1,9 +1,7 @@
-import {InputSystem} from "./InputSystem";
 import {Vector2} from "./Vector2";
+import {InputSystem} from "./InputSystem";
 
-
-
-class Entity
+export class Entity
 {
   private _element: HTMLElement;
   private _speed: number;
@@ -29,9 +27,8 @@ class Entity
   {
     this.ProcessInput();
 
-    this._velocity.x = Lerp(this._velocity.x, 0, this.DRAG_COEFFICIENT);
-    this._velocity.y = Lerp(this._velocity.y, 0, this.DRAG_COEFFICIENT);
-    
+    this._velocity = Vector2.Lerp(this._velocity, Vector2.Zero(), this.DRAG_COEFFICIENT);
+
     const currentX = parseFloat(this._element.style.left) || 0;
     const currentY = parseFloat(this._element.style.top) || 0;
 
@@ -76,34 +73,4 @@ class Entity
     this.Move(new Vector2(x, y));
   }
 };
-
-
-function Lerp(a:number, b:number, p:number): number
-{
-  const addition = (b-a) * p;
-
-  return a + addition;
-
-}
-
-
-const playerElement = document.getElementById("Player") as HTMLElement;
-playerElement.style.position = "absolute";
-playerElement.style.left = "100px";
-playerElement.style.top = "100px";
-
-const inputSystem = new InputSystem();
-const player = new Entity(playerElement, 2, inputSystem);
-
-async function GameLoop()
-{
-  while(true)
-  {
-    await new Promise(resolve => setTimeout(resolve, 10));
-    player.Update();
-    inputSystem.ResetReleasedKeys();
-  }
-}
-
-GameLoop();
 
