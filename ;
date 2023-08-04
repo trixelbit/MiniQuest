@@ -1,0 +1,22 @@
+export class InputSystem
+{
+  private _inputStates: Dictionary<boolean>;
+
+  constructor()
+  {
+    this._inputStates = Dictionary<boolean> = {
+      "ArrowRight": false,
+    };
+  }
+
+  public function IsInputDown(key: string): boolean
+  {
+    if(this._inputStates.)
+  }
+}
+
+
+interface Dictionary<T>
+{
+   [key: string] : T;
+}

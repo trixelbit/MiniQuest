@@ -1,0 +1,24 @@
+MiniQuest Design Doc
+
+
+What type of game do I want to make?
+- Short and simple
+- Quest Structure
+- Simple Story line
+- 
+
+
+Game Loop:
+Receive Quest -> collect items -> end of game.
+
+Narrative:
+Cloud Girls find  that head of a robot who crash landed.
+
+His parts are spread around the forest and he asks you to search for them.
+(bonus) have the player use those part mechanically.
+
+Power Ups:
+Torso: Shoot
+Arm: Left up and throw things 
+Legs: Dash
+ 
