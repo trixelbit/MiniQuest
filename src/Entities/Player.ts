@@ -38,7 +38,6 @@ export class Player extends Entity
   {
     var vector = this._movement.Velocity;
    
-    console.log(vector.Magnitude());
     if(vector.Magnitude() > 0)
     {
       this._state = EPlayerState.Walking;
@@ -67,18 +66,17 @@ export class Player extends Entity
     }
 
     var index = (this._state * 4) + this._direction;
-    console.log(index + " = (" + this._state + " * 4)  + " + this._direction);
     this.SetSprite(this._spriteTable[index]);
   }
 
   private SetSprite(sprite_address: string)
   {
-    if(this._element.src === sprite_address)
+    if(this._element.getAttribute("src") === sprite_address)
     {
       return;
     }
 
-    this._element.src = sprite_address;
+    this._element.setAttribute("src", sprite_address);
   }
 }
 

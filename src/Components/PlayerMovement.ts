@@ -18,13 +18,13 @@ export class PlayerMovement implements IComponent
     return this._velocity.Copy()
   }
 
-
   constructor(element: HTMLImageElement, inputSystem: InputSystem, maxSpeed: number)
   {
     this._inputSystem = inputSystem; 
     this._element = element;
     this._maxSpeed = maxSpeed;
   }
+
 
   public Start(): void
   {
@@ -36,7 +36,6 @@ export class PlayerMovement implements IComponent
     this._input = this.ProcessInput();
     this.SetVelocity(this._input); 
 
-    console.log(this._input);
     this._velocity = Vector2.Lerp(this._velocity, Vector2.Zero(), this.DRAG_COEFFICIENT);
 
     const currentX = parseFloat(this._element.style.left) || 0;
