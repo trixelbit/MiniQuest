@@ -8,6 +8,8 @@ export interface IComponent
 
 export class Entity
 {
+  private _id: string = crypto.randomUUID(); 
+
   private _components: IComponent[];
  
   protected _element: HTMLImageElement;
@@ -20,7 +22,7 @@ export class Entity
   {
     this._element = document.createElement("img");
     this._element.style.position = "absolute";
-    this._element.id = name;
+    this._element.id = name + " - " + this._id;
     this._element.src = "";
     document.body.appendChild(this._element);
 

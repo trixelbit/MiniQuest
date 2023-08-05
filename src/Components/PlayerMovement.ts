@@ -13,6 +13,12 @@ export class PlayerMovement implements IComponent
 
   private readonly DRAG_COEFFICIENT: number = 0.05;
 
+  get Velocity(): Vector2
+  {
+    return this._velocity.Copy()
+  }
+
+
   constructor(element: HTMLImageElement, inputSystem: InputSystem, maxSpeed: number)
   {
     this._inputSystem = inputSystem; 
@@ -79,6 +85,6 @@ export class PlayerMovement implements IComponent
       y += 1;
     }
 
-    return new Vector2(x, y);
+    return Vector2.Normalized(new Vector2(x, y));
   }
 }

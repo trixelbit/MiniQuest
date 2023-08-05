@@ -1,4 +1,4 @@
-export class Math
+export class MathUtils
 {
   static Lerp(a:number, b:number, p:number): number
   {
