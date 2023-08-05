@@ -1,23 +1,21 @@
 import {InputSystem} from "./InputSystem";
-import { Entity } from "./Entity";
-
-const playerElement = document.getElementById("Player") as HTMLElement;
-playerElement.style.position = "absolute";
-playerElement.style.left = "100px";
-playerElement.style.top = "100px";
+import { Player } from "./Entities/Player";
 
 const inputSystem = new InputSystem();
-const player = new Entity(playerElement, 2, inputSystem);
 
-async function GameLoop()
+document.addEventListener("DOMContentLoaded", () => {
+  const player = new Player(inputSystem);
+
+  GameLoop(player, inputSystem);
+});
+
+async function GameLoop(player: Player, inputSystem: InputSystem)
 {
   while(true)
   {
+    player.Start();
     await new Promise(resolve => setTimeout(resolve, 10));
     player.Update();
     inputSystem.ResetReleasedKeys();
   }
 }
-
-GameLoop();
-

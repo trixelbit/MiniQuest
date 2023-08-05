@@ -38,7 +38,7 @@ export class InputSystem
   {
     if(!this._downKeys.has(key))
     {
-      console.log("IsKeyDown Error: Key value " + key + " does not exist in input system.");
+      //console.log("IsKeyDown Error: Key value " + key + " does not exist in input system.");
       return false;
     } 
 
@@ -50,7 +50,7 @@ export class InputSystem
   {
     if(!this._pressedKeys.has(key))
     {
-      console.log("IsKeyPressed Error: Key value " + key + " does not exist in input system.");
+      //console.log("IsKeyPressed Error: Key value " + key + " does not exist in input system.");
       return false;
     }
     
@@ -62,7 +62,7 @@ export class InputSystem
   {
     if(!this._releasedKeys.has(key))
     {
-      console.log("IsKeyReleased Error: Key value " + key + " does not exist in input system.");
+      //console.log("IsKeyReleased Error: Key value " + key + " does not exist in input system.");
       return false;
     }
     
@@ -78,7 +78,4 @@ export class InputSystem
        this._releasedKeys.set(key, false);
     }
   }
-}
-    
-
-
+} 

@@ -1,6 +1,5 @@
 import {Math} from './Math';
 
-
 export class Vector2
 {
   x: number;
