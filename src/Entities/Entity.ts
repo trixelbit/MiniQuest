@@ -22,6 +22,8 @@ export class Entity
   {
     this._element = document.createElement("img");
     this._element.style.position = "absolute";
+    this._element.style.scale = "200%";
+    this._element.style.imageRendering = "pixelated";
     this._element.id = name + " - " + this._id;
     this._element.src = "";
     document.body.appendChild(this._element);

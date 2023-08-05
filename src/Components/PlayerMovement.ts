@@ -56,10 +56,10 @@ export class PlayerMovement implements IComponent
 
   private ProcessInput(): Vector2
   {
-    const left = this._inputSystem.IsKeyDown("ArrowLeft");
-    const right = this._inputSystem.IsKeyDown("ArrowRight");
-    const up = this._inputSystem.IsKeyDown("ArrowUp");
-    const down = this._inputSystem.IsKeyDown("ArrowDown");
+    const left = this._inputSystem.IsKeyDown("a");
+    const right = this._inputSystem.IsKeyDown("d");
+    const up = this._inputSystem.IsKeyDown("w");
+    const down = this._inputSystem.IsKeyDown("s");
 
     var x = 0;
     var y = 0;
@@ -87,3 +87,4 @@ export class PlayerMovement implements IComponent
     return Vector2.Normalized(new Vector2(x, y));
   }
 }
+
