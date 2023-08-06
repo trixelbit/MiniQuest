@@ -26,6 +26,7 @@ export class Entity
     this._element.style.imageRendering = "pixelated";
     this._element.id = name + " - " + this._id;
     this._element.src = "";
+    this._element.style.zIndex = "10"; 
     document.body.appendChild(this._element);
 
     this._components = components;

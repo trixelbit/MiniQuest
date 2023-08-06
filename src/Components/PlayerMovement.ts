@@ -15,7 +15,7 @@ export class PlayerMovement implements IComponent
 
   get Velocity(): Vector2
   {
-    return this._velocity.Copy()
+    return this._velocity.Copy();
   }
 
   constructor(element: HTMLImageElement, inputSystem: InputSystem, maxSpeed: number)
