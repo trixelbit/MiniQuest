@@ -1,5 +1,6 @@
 import {InputSystem} from "./InputSystem";
 import { Player } from "./Entities/Player";
+import { Vector2 } from "./Vector2";
 
 const inputSystem = new InputSystem();
 
@@ -31,12 +32,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function GameLoop(player: Player, inputSystem: InputSystem, )
 {
+  var camPosition = Vector2.Zero();
+
   while(true)
   {
     player.Start();
     await new Promise(resolve => setTimeout(resolve, 10));
     player.Update();
+
+    if(inputSystem.IsKeyDown("h"))
+    {
+      camPosition.x += -1;
+    }
+
+    if(inputSystem.IsKeyDown("l"))
+    {
+      camPosition.x += 1;
+    }
+
+    if(inputSystem.IsKeyDown("j"))
+    {
+      camPosition.y += 1;
+    }
+
+    if(inputSystem.IsKeyDown("k"))
+    {
+      camPosition.y += -1;
+    }
+
+    player.ApplyCameraPositionToElement(camPosition);
+
     inputSystem.ResetReleasedKeys(); 
-   
   }
 }

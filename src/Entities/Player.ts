@@ -23,7 +23,7 @@ export class Player extends Entity
   {
     super("Player");
     this._element.src = "Images/idle_up.png";
-    this._movement = new PlayerMovement(this._element, inputSystem, 2);
+    this._movement = new PlayerMovement(this, this._element, inputSystem, 4);
     this.AddComponent(this._movement);
   }
 

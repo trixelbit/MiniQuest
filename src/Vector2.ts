@@ -2,8 +2,8 @@ import {MathUtils} from './Math';
 
 export class Vector2
 {
-  x: number;
-  y: number;
+  public x: number;
+  public y: number;
 
   constructor(x: number, y: number)
   {
@@ -16,11 +16,30 @@ export class Vector2
     return new Vector2(this.x, this.y); 
   }
 
+  static Scale(value: Vector2, scale: number): Vector2
+  {
+    return new Vector2(value.x * scale, value.y * scale);
+  }
+
   public Scale(value: number): void
   {
     this.x *= value;
     this.y *= value;
   }
+
+  static Subtract(a: Vector2, b: Vector2): Vector2
+  {
+    if(a === null)
+    {
+      throw new Error("a in Vector2.Subtract is null");
+    }
+
+    if(b === null)
+    {
+      throw new Error("b in Vector2.Subtract is null");
+    }
+    return new Vector2(a.x - b.x, a.y - b.y);
+  } 
 
   public Magnitude(): number
   {
@@ -49,6 +68,10 @@ export class Vector2
   {
     var magnitude = vector.Magnitude();
 
+    if(magnitude === 0)
+    {
+      return Vector2.Zero();
+    }
     return new Vector2(vector.x/magnitude, vector.y/magnitude);
   }
   // todo: methods that need to be added 
