@@ -27,7 +27,7 @@ export class Vector2
     this.y *= value;
   }
 
-  static Subtract(a: Vector2, b: Vector2): Vector2
+  public static Subtract(a: Vector2, b: Vector2): Vector2
   {
     if(a === null)
     {
@@ -75,10 +75,6 @@ export class Vector2
     return new Vector2(vector.x/magnitude, vector.y/magnitude);
   }
   // todo: methods that need to be added 
-  //
-  // Distance
-  //
-  // Normalize
   //
   // Dot
   //

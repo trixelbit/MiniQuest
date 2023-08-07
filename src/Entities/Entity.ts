@@ -39,7 +39,7 @@ export class Entity
 
   /**
   * @param {string} name Name of Entity
-  * @param {IComponent[]} components Array of Components this should contain.
+  * @param {Vector2} position starting position in world space for entity.
   **/
   constructor(name: string, position: Vector2 = Vector2.Zero())
   {
@@ -55,6 +55,11 @@ export class Entity
     document.body.appendChild(this._element);
 
     this._components = [];
+  }
+
+  public SetZDepth(depth: number): void
+  {
+    this._element.style.zIndex = depth.toString();
   }
 
   public AddComponent(component: IComponent): void
@@ -78,21 +83,19 @@ export class Entity
     }
   }
 
+  public SetSprite(sprite_address: string)
+  {
+    if(this._element.getAttribute("src") === sprite_address)
+    {
+      return;
+    }
+
+    this._element.setAttribute("src", sprite_address);
+  }
+
   public ApplyCameraPositionToElement(cameraPosition: Vector2): void
   {
-    if(isNaN(cameraPosition.x))
-    {
-      console.log("cam pos is nan");
-    }
-
-    if(isNaN(this.WorldPosition.x))
-    {
-      console.log("world pos is nan");
-    }
-
-    console.log("Pre" + this.WorldPosition.x);
     const newValue = Vector2.Subtract(this.WorldPosition, cameraPosition);
-    console.log("Post" + this.WorldPosition.x);
     this._element.style.top = newValue.y + "px";
     this._element.style.left = newValue.x + "px";
   }

@@ -23,7 +23,7 @@ export class Player extends Entity
   {
     super("Player");
     this._element.src = "Images/idle_up.png";
-    this._movement = new PlayerMovement(this, this._element, inputSystem, 4);
+    this._movement = new PlayerMovement(this, inputSystem, 4);
     this.AddComponent(this._movement);
   }
 
@@ -67,16 +67,6 @@ export class Player extends Entity
 
     var index = (this._state * 4) + this._direction;
     this.SetSprite(this._spriteTable[index]);
-  }
-
-  private SetSprite(sprite_address: string)
-  {
-    if(this._element.getAttribute("src") === sprite_address)
-    {
-      return;
-    }
-
-    this._element.setAttribute("src", sprite_address);
   }
 }
 
